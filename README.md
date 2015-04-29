@@ -12,6 +12,10 @@ docker run -d --name eraserver --restart=always -p 2222:2222 -p 1237:1237/udp -p
 [ -e ProductInstanceID=66666 ]
 
 
+При создании образа нужно задать пароль администратора сервера 
+ SERVER_ROOT_PASSWORD=11112222
+
+
 Зависит:
 
 - Создать папку для логов - /var/log/eset/RemoteAdministrator/Server

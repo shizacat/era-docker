@@ -8,6 +8,7 @@ ENV DB_PASS era
 ENV DB_HOST 172.17.42.1
 ENV DB_BASE era_db
 ENV HOST_NAMES "192.168.14.147;Ubuntu64-bb;Ubuntu64-bb.BB.LOCAL;b147.cherinfo.ru"
+ENV SERVER_ROOT_PASSWORD 11112222
 
 CMD ["/sbin/my_init"]
 
@@ -49,7 +50,7 @@ RUN /tmp/Server-Linux-x86_64.sh \
 	--db-port=3306 \
 	--db-admin-username=${DB_USER_PROOT} \
 	--db-admin-password=${DB_PASS_PROOT} \
-	--server-root-password=11112222 \
+	--server-root-password=${SERVER_ROOT_PASSWORD} \
 	--db-user-username=${DB_USER} \
 	--db-user-password=${DB_PASS} \
 	--cert-hostname=${HOST_NAMES} \
