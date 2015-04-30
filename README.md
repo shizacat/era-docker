@@ -73,4 +73,5 @@ my.cnf
 max_allowed_packet=33M
 
 log_bin_trust_function_creators = 1
+binlog_format = row
 ```
