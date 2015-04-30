@@ -5,7 +5,15 @@
 ```sh
 docker build -t eraserver --no-cache ./
 
-docker run -d --name eraserver --restart=always -p 2222:2222 -p 1237:1237/udp -p 2223:2223 -v /var/log/eset/RemoteAdministrator/Server:/var/log/eset/RemoteAdministrator/Server eraserver
+docker run -d \
+	--name eraserver \
+	--restart=always \
+	-p 2222:2222 \
+	-p 1237:1237/udp \
+	-p 2223:2223 \
+	-v /var/log/eset/RemoteAdministrator/Server:/var/log/eset/RemoteAdministrator/Server \
+	-v /etc/localtime:/etc/localtime:ro \
+	eraserver
 ```
 
 Если база уже есть нужно найти идентификатор предыдущего инстанса (era_db.tbl_servers - server_uuid) и добавить в настройки сервера:
@@ -25,6 +33,9 @@ SERVER_ROOT_PASSWORD=11112222
 DB_HOST=172.17.42.1 - если база на хост машине
 ```
 
+Могут понадобиться сертификаты - пока не включены
+
+
 ### Веб консоль
 
 Копируем в папку с докер файлом:
@@ -36,7 +47,7 @@ docker build -t eraconsole --no-cache ./
 docker run -d \
 	--name eraconsole \
 	--restart=always \
-	-p 8080:8080 \
+	-p 127.0.0.1:8080:8080 \
 	-v /var/log/eset/RemoteAdministrator/Console:/var/log/eset/RemoteAdministrator/Console \
 	-v /etc/localtime:/etc/localtime:ro \
 	eraconsole
@@ -60,4 +71,6 @@ export SERVER_ADDRESS=172.17.42.1
 my.cnf
 [mysqld]
 max_allowed_packet=33M
+
+log_bin_trust_function_creators = 1
 ```

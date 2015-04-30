@@ -38,9 +38,9 @@ RUN echo "[ESET_RA_DB]" > /etc/odbc.ini && \
     echo "PASSWORD	= ${DB_PASS_PROOT}" >> /etc/odbc.ini 
 
 RUN mkdir /cert
-ADD e_server.pfx /cert/server.pfx
-ADD e_agent.pfx /cert/agent.pfx
-ADD ca.der /cert/ca.der
+# ADD e_server.pfx /cert/server.pfx
+# ADD e_agent.pfx /cert/agent.pfx
+# ADD ca.der /cert/ca.der
 
 RUN /tmp/Server-Linux-x86_64.sh \
 	--skip-license \
