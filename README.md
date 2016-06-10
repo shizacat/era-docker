@@ -25,12 +25,29 @@ docker run -d \
 SERVER_ROOT_PASSWORD=11112222
 ```
 
+ENVERONMENT:
+
+* ProductInstanceID - идентификатор инстанса
+* SERVER_ROOT_PASSWORD - пароль на доступ к серверу (под логином Administrator)
+
+* TIMEZONE - временная зона (default: Europe/Moscow)
+* NTP_SERVER - сервер врмени
+
+* DB_USER_PROOT - имя администратора базы (для установки)
+* DB_PASS_PROOT - пароль администратора базы (для установки)
+* DB_USER - имя пользователя базы для era server
+* DB_PASS - пароль пользователя базы для era server
+* DB_HOST - Адрес базы данных (default: 172.17.0.1)
+* DB_BASE - Имя базы данных (default: era_db)
+
+
+
 ##### Зависит:
 
 - Создать папку для логов - /var/log/eset/RemoteAdministrator/Server
 
 ```sh
-DB_HOST=172.17.42.1 - если база на хост машине
+DB_HOST=172.17.0.1 - если база на хост машине, Для Docker версии меньше 1.9 - 172.17.42.1
 ```
 
 Могут понадобиться сертификаты - пока не включены
